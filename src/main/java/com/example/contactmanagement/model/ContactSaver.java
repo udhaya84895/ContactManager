@@ -1,26 +1,28 @@
-package model;
+package com.example.contactmanagement.model;
 
 
 import jakarta.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+
 
 @Entity
 @Table(name = "Cantacts")
-
+@Getter
+@Setter
 public class ContactSaver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     @Column(name = "Name", unique = false, nullable = false, length = 50)
-    private String Name;
+    private String name;
     @Column(name = "PhoneNumber", unique = true, nullable = false, length = 10)
-    private String Phone;
+    private String phone;
     @Column(name = "Email", unique = true, nullable = false, length = 100)
-    private String Email;
+    private String email;
     @Column(name = "Description")
     private String description;
 
@@ -28,49 +30,10 @@ public class ContactSaver {
 
     }
     public ContactSaver(String name, String phone, String email, String desc){
-        this.Name = name;
-        this.Phone = phone;
-        this.Email = email;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
         this.description = desc;
     }
 
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
