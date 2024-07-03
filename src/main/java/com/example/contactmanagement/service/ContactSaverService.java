@@ -28,18 +28,12 @@ public class ContactSaverService {
 
     }
 
-    public List<String> getAllByName(String name) {
-        List<ContactSaver> contacts = (List<ContactSaver>) contactSaverRepository.findAllByName(name);
-
-        // Check if contacts list is not null and not empty
-        if (!contacts.isEmpty()) {
-            List<String> names = contacts.stream()
-                    .map(ContactSaver::getName)
-                    .collect(Collectors.toList());
-
-            return names;
-        } else {
+    public List<ContactSaver> getAllByName(String name) {
+        List<ContactSaver> contacts =  contactSaverRepository.findAllByName(name);
+        if(contacts.isEmpty()){
             return new ArrayList<>();
+        }else {
+            return contacts;
         }
     }
 }

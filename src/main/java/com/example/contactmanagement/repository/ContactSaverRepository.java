@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface ContactSaverRepository extends JpaRepository <ContactSaver, Long>{
 
-    ContactSaver findAllByName(String name);
+    List<ContactSaver> findAllByName(String name);
 }
